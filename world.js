@@ -5,14 +5,12 @@ window.onload = () => {
 }
 
 function countrySearch (e){
-    var searchString = document.getElementById("country").value;
+    var searchString = document.getElementById("country").value.length > 0 ? document.getElementById("country").value: "";
+    
     console.log(country);
     var req = new Request('world.php');
-    if (searchString.length > 0){
-        //sanitize
-        searchString = searchString.replaceAll(">","").replaceAll("<", "") ;
-        req = new Request(`world.php?country=${searchString}`);
-    }
+    searchString = searchString.replaceAll(">","").replaceAll("<", "") ;
+    req = new Request(`world.php?country=${searchString}`);
     const myInit = {
         method: 'GET',
         mode: 'cors',
